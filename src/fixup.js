@@ -16,7 +16,7 @@ Git.Repository.open(path.resolve('../.git'))
 .then(function(repoResult) {
   repo = repoResult
   counterFile = path.join(repo.workdir(), '.git_thin/' + fileName)
-  debugger
+  // debugger
   return fse.ensureFile(counterFile)
 })
 .then(function() {
@@ -24,12 +24,33 @@ Git.Repository.open(path.resolve('../.git'))
   return fse.readFile(counterFile, 'utf8')
 })
 .then (function(data) {
-  if ((commitCount = parseInt(data, 10)) > 0 ) {
+  commitCount = parseInt(data, 10)
+  if (commitCount > 0) {
+    return repo.getHeadCommit()
   } else {
-    commitCount = 0
-    console.log("Counter value invalid")
+    console.log("Commit value invalid (must be greater than 0)")
+    process.exit()
   }
-  commitCount++
+}).then(function(commit) {
+  let eventEmitter = commit.history()
+
+    eventEmitter.on('commit', function(commit) {
+      // Use commit
+      debugger
+    });
+
+    eventEmitter.on('end', function(commits) {
+      // Use commits
+      debugger
+    });
+
+    eventEmitter.on('error', function(error) {
+      // Use error
+      debugger
+    });
+
+    eventEmitter.start()
+
 })
 // .then(function(oidResult) {
 //   oid = oidResult
