@@ -61,7 +61,7 @@ Git.Repository.open(path.resolve('../.git'))
   return fse.ensureFile(counterFile)
 })
 .then(function() {
-  // debugger
+  debugger
   return fse.readFile(counterFile, 'utf8')
 })
 .then (function(data) {

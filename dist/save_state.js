@@ -61,7 +61,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   counterFile = _path2['default'].join(repo.workdir(), '.git_thin/' + fileName);
   return fse.ensureFile(counterFile);
 }).then(function () {
-  // debugger
+  debugger;
   return fse.readFile(counterFile, 'utf8');
 }).then(function (data) {
   if ((commitCount = parseInt(data, 10)) > 0) {
