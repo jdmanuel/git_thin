@@ -65,7 +65,7 @@ Git.Repository.open(path.resolve('../.git'))
 .then (function(data) {
   if ((commitCount = parseInt(data, 10)) > 0 ) {
   } else {
-    commitCount = 0
+    let commitCount = 0
     console.log("Counter value invalid")
   }
   debugger
