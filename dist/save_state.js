@@ -56,6 +56,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   var signature = _nodegit2['default'].Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
 }).then(function (commitId) {
+  debugger;
   console.log("New Commit: ", commitId);
 }).then(function () {
   counterFile = _path2['default'].join(repo.workdir(), '.git_thin/' + fileName);
