@@ -70,9 +70,9 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   } else {
       commitCount = 0;
     }
-  commitCount++;
-  debugger;
-  return commitCount;
+  // commitCount++
+  // debugger
+  return commitCount++;
 }).then(function (commitCount) {
   debugger;
   fse.writeFile(counterFile, commitCount, function (err) {
