@@ -6,8 +6,6 @@ let fse = promisify(require('fs-extra')),
     fileName = 'commit_count.gt',
     counterFile = '',
     commitCount = 0,
-    fileContent = 'hello world',
-    directoryName = 'test',
     authorCommitter = {},
     date = new Date(),
     repo, index, oid, globalConfig

@@ -15,11 +15,11 @@ var _promisifyNode = require('promisify-node');
 var _promisifyNode2 = _interopRequireDefault(_promisifyNode);
 
 var fse = (0, _promisifyNode2['default'])(require('fs-extra')),
-    fileName = 'newfile.txt',
-    fileContent = 'hello world',
-    directoryName = 'test',
     authorCommitter = {},
     date = new Date(),
+    fileName = 'commit_count.gt',
+    counterFile = '',
+    commitCount = 0,
     repo = undefined,
     index = undefined,
     oid = undefined,

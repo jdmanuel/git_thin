@@ -3,11 +3,11 @@ import path from 'path'
 import promisify from 'promisify-node'
 
 let fse = promisify(require('fs-extra')),
-    fileName = 'newfile.txt',
-    fileContent = 'hello world',
-    directoryName = 'test',
     authorCommitter = {},
     date = new Date(),
+    fileName = 'commit_count.gt',
+    counterFile = '',
+    commitCount = 0,
     repo, index, oid, globalConfig
 
 fse.ensureDir = promisify(fse.ensureDir)
