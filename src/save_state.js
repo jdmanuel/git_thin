@@ -71,5 +71,11 @@ Git.Repository.open(path.resolve('../.git'))
     commitCount = 0
     console.log("Counter value invalid")
   }
-  commitCount++
+  return commitCount++
+})
+.then(function(commitCount) {
+  fse.writeFile(counterFile, commitCount, (err) => {
+    if (err) throw err;
+    console.log('It\'s saved!');
+  });
 })

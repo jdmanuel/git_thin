@@ -70,5 +70,10 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
     commitCount = 0;
     console.log("Counter value invalid");
   }
-  commitCount++;
+  return commitCount++;
+}).then(function (commitCount) {
+  fse.writeFile(counterFile, commitCount, function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+  });
 });
