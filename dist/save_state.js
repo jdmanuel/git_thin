@@ -66,8 +66,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
     commitCount = 0;
     console.log("Counter value invalid");
   }
-  // commitCount++
-  // debugger
+  debugger;
   return commitCount++;
 }).then(function (commitCount) {
   debugger;
