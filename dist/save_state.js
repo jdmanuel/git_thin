@@ -58,6 +58,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
 }).then(function (commitId) {
   console.log("New Commit: ", commitId);
 }).then(function () {
+  debugger;
   counterFile = _path2['default'].join(repo.workdir(), '.git_thin/' + fileName);
   return fse.ensureFile(counterFile);
 }).then(function () {

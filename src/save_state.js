@@ -57,6 +57,7 @@ Git.Repository.open(path.resolve('../.git'))
   console.log("New Commit: ", commitId);
 })
 .then(function() {
+  debugger
   counterFile = path.join(repo.workdir(), '.git_thin/' + fileName)
   return fse.ensureFile(counterFile)
 })
