@@ -52,7 +52,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   oid = oidResult;
   return repo.getHeadCommit();
 }).then(function (parent) {
-  debugger;
+  // debugger
   var signature = _nodegit2['default'].Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
 }).then(function (commitId) {
@@ -65,13 +65,14 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   return fse.readFile(counterFile, 'utf8');
 }).then(function (data) {
   if ((commitCount = parseInt(data, 10)) > 0) {
-    debugger;
+    // debugger
   } else {
-    commitCount = 0;
-    console.log("Counter value invalid");
-  }
+      commitCount = 0;
+      console.log("Counter value invalid");
+    }
   return commitCount++;
 }).then(function (commitCount) {
+  debugger;
   fse.writeFile(counterFile, commitCount, function (err) {
     if (err) throw err;
     console.log('It\'s saved!');
