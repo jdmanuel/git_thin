@@ -63,9 +63,10 @@ Git.Repository.open(path.resolve('../.git'))
   return fse.readFile(counterFile, 'utf8')
 })
 .then (function(data) {
+  let commitCount
   if ((commitCount = parseInt(data, 10)) > 0 ) {
   } else {
-    let commitCount = 0
+    commitCount = 0
     console.log("Counter value invalid")
   }
   debugger

@@ -62,8 +62,9 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
 }).then(function () {
   return fse.readFile(counterFile, 'utf8');
 }).then(function (data) {
+  var commitCount = undefined;
   if ((commitCount = parseInt(data, 10)) > 0) {} else {
-    var _commitCount = 0;
+    commitCount = 0;
     console.log("Counter value invalid");
   }
   debugger;
