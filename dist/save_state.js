@@ -74,7 +74,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   // debugger
   return commitCount;
 }).then(function (commitCount) {
-  debugger;
+  // debugger
   fse.writeFile(counterFile, commitCount, function (err) {
     if (err) throw err;
     console.log('It\'s saved!');

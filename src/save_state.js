@@ -76,7 +76,7 @@ Git.Repository.open(path.resolve('../.git'))
   return commitCount
 })
 .then(function(commitCount) {
-  debugger
+  // debugger
   fse.writeFile(counterFile, commitCount, (err) => {
     if (err) throw err;
     console.log('It\'s saved!');
