@@ -71,9 +71,9 @@ Git.Repository.open(path.resolve('../.git'))
   } else {
     commitCount = 0
   }
-  // commitCount++
+  commitCount++
   // debugger
-  return commitCount++
+  return commitCount
 })
 .then(function(commitCount) {
   debugger
