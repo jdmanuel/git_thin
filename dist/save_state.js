@@ -50,9 +50,7 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   return index.writeTree();
 }).then(function (oidResult) {
   oid = oidResult;
-  return _nodegit2['default'].Reference.nameToId(repo, "HEAD");
-}).then(function (head) {
-  return repo.getCommit(head);
+  return repo.getHeadCommit();
 }).then(function (parent) {
   debugger;
   var signature = _nodegit2['default'].Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);

@@ -45,10 +45,7 @@ Git.Repository.open(path.resolve('../.git'))
 })
 .then(function(oidResult) {
   oid = oidResult
-  return Git.Reference.nameToId(repo, "HEAD")
-})
-.then(function(head) {
-  return repo.getCommit(head);
+  return repo.getHeadCommit()
 })
 .then(function(parent) {
   debugger
