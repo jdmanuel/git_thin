@@ -47,7 +47,6 @@ Git.Repository.open(path.resolve('../.git'))
   return repo.getHeadCommit()
 })
 .then(function(parent) {
-  // debugger
   let signature =
     Git.Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
@@ -64,8 +63,6 @@ Git.Repository.open(path.resolve('../.git'))
 })
 .then (function(data) {
   let commitCount = parseInt(data, 10)
-  console.log(commitCount)
-
   if (commitCount <= 0) {
     commitCount = 0
   }
@@ -77,5 +74,5 @@ Git.Repository.open(path.resolve('../.git'))
     if (err) {
       console.log("Error writing commit count to file")
     }
-  });
+  })
 })

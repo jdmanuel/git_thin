@@ -51,7 +51,6 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   oid = oidResult;
   return repo.getHeadCommit();
 }).then(function (parent) {
-  // debugger
   var signature = _nodegit2['default'].Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
 }).then(function (commitId) {
@@ -63,8 +62,6 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   return fse.readFile(counterFile, 'utf8');
 }).then(function (data) {
   var commitCount = parseInt(data, 10);
-  console.log(commitCount);
-
   if (commitCount <= 0) {
     commitCount = 0;
   }
