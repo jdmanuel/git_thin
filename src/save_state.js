@@ -54,7 +54,6 @@ Git.Repository.open(path.resolve('../.git'))
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
 })
 .then(function(commitId) {
-  debugger
   console.log("New Commit: ", commitId);
 })
 .then(function() {
@@ -72,6 +71,7 @@ Git.Repository.open(path.resolve('../.git'))
     commitCount = 0
     console.log("Counter value invalid")
   }
+  debugger
   return commitCount++
 })
 .then(function(commitCount) {
