@@ -69,8 +69,7 @@ Git.Repository.open(path.resolve('../.git'))
     commitCount = 0
     console.log("Counter value invalid")
   }
-  debugger
-  return commitCount++
+  commitCount++
 })
 .then(function(commitCount) {
   debugger
