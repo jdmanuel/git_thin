@@ -48,36 +48,12 @@ Git.Repository.open(path.resolve('../.git'))
   return repo.getHeadCommit()
 })
 .then(function(parent) {
-  // debugger
+  debugger
   let signature =
     Git.Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
 })
-.then(function(commitId) {
+.done(function(commitId) {
   debugger
   console.log("New Commit: ", commitId);
-})
-.then(function() {
-  counterFile = path.join(repo.workdir(), '.git_thin/' + fileName)
-  return fse.ensureFile(counterFile)
-})
-.then(function() {
-  // debugger
-  return fse.readFile(counterFile, 'utf8')
-})
-.then (function(data) {
-  if ((commitCount = parseInt(data, 10)) > 0 ) {
-    // debugger
-  } else {
-    commitCount = 0
-    console.log("Counter value invalid")
-  }
-  return commitCount++
-})
-.then(function(commitCount) {
-  debugger
-  fse.writeFile(counterFile, commitCount, (err) => {
-    if (err) throw err;
-    console.log('It\'s saved!');
-  });
-})
+});
