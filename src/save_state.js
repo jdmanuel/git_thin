@@ -7,7 +7,6 @@ let fse = promisify(require('fs-extra')),
     date = new Date(),
     fileName = 'commit_count.gt',
     counterFile = '',
-    commitCount = 0,
     repo, index, oid, globalConfig
 
 fse.ensureDir = promisify(fse.ensureDir)
@@ -57,22 +56,20 @@ Git.Repository.open(path.resolve('../.git'))
   console.log("New Commit: ", commitId);
 })
 .then(function() {
-  debugger
   counterFile = path.join(repo.workdir(), '.git_thin/' + fileName)
   return fse.ensureFile(counterFile)
 })
 .then(function() {
-  debugger
   return fse.readFile(counterFile, 'utf8')
 })
 .then (function(data) {
   if ((commitCount = parseInt(data, 10)) > 0 ) {
-    debugger
   } else {
     commitCount = 0
     console.log("Counter value invalid")
   }
-  debugger
+  // commitCount++
+  // debugger
   return commitCount++
 })
 .then(function(commitCount) {
