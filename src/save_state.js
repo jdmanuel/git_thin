@@ -53,6 +53,23 @@ Git.Repository.open(path.resolve('../.git'))
     Git.Signature.create(authorCommitter.name, authorCommitter.email, date.getTime(), 0);
   return repo.createCommit("HEAD", signature, signature, date.toString(), oid, [parent]);
 })
-.done(function(commitId) {
+.then(function(commitId) {
   console.log("New Commit: ", commitId);
-});
+})
+.then(function() {
+  counterFile = path.join(repo.workdir(), '.git_thin/' + fileName)
+  return fse.ensureFile(counterFile)
+})
+.then(function() {
+  // debugger
+  return fse.readFile(counterFile, 'utf8')
+})
+.then (function(data) {
+  if ((commitCount = parseInt(data, 10)) > 0 ) {
+    debugger
+  } else {
+    commitCount = 0
+    console.log("Counter value invalid")
+  }
+  commitCount++
+})

@@ -17,6 +17,7 @@ var _promisifyNode2 = _interopRequireDefault(_promisifyNode);
 var fse = (0, _promisifyNode2['default'])(require('fs-extra')),
     fileName = 'commit_count.gt',
     counterFile = '',
+    commitCount = 0,
     fileContent = 'hello world',
     directoryName = 'test',
     authorCommitter = {},
@@ -33,14 +34,17 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   counterFile = _path2['default'].join(repo.workdir(), '.git_thin/' + fileName);
   return fse.ensureFile(counterFile);
 }).then(function () {
-  debugger;
-  return fse.readFile(counterFile, 'utf8', function (err, data) {
+  // debugger
+  return fse.readFile(counterFile, 'utf8');
+}).then(function (data) {
+  if ((commitCount = parseInt(data, 10)) > 0) {
     debugger;
-  });
+  } else {
+    commitCount = 0;
+    console.log("Counter value invalid");
+  }
+  commitCount++;
 });
-// .then (function(err, data) {
-//   debugger
-// })
 // .then(function(oidResult) {
 //   oid = oidResult
 //   return repo.getHeadCommit()

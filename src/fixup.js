@@ -5,6 +5,7 @@ import promisify from 'promisify-node'
 let fse = promisify(require('fs-extra')),
     fileName = 'commit_count.gt',
     counterFile = '',
+    commitCount = 0,
     fileContent = 'hello world',
     directoryName = 'test',
     authorCommitter = {},
@@ -20,15 +21,18 @@ Git.Repository.open(path.resolve('../.git'))
   return fse.ensureFile(counterFile)
 })
 .then(function() {
-  debugger
-  return fse.readFile(counterFile, 'utf8', function(err, data) {
-    debugger
-
-  })
+  // debugger
+  return fse.readFile(counterFile, 'utf8')
 })
-// .then (function(err, data) {
-//   debugger
-// })
+.then (function(data) {
+  if ((commitCount = parseInt(data, 10)) > 0 ) {
+    debugger
+  } else {
+    commitCount = 0
+    console.log("Counter value invalid")
+  }
+  commitCount++
+})
 // .then(function(oidResult) {
 //   oid = oidResult
 //   return repo.getHeadCommit()
