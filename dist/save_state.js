@@ -65,18 +65,15 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   var commitCount = parseInt(data, 10);
   console.log(commitCount);
 
-  if (commitCount > 0) {
-    // noop
-  } else {
-      commitCount = 0;
-    }
+  if (commitCount <= 0) {
+    commitCount = 0;
+  }
   commitCount++;
-  // debugger
   return commitCount;
 }).then(function (commitCount) {
-  // debugger
   fse.writeFile(counterFile, commitCount, function (err) {
-    if (err) throw err;
-    console.log('It\'s saved!');
+    if (err) {
+      console.log("Error writing commit count to file");
+    }
   });
 });

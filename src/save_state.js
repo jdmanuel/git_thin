@@ -66,19 +66,16 @@ Git.Repository.open(path.resolve('../.git'))
   let commitCount = parseInt(data, 10)
   console.log(commitCount)
 
-  if (commitCount > 0 ) {
-    // noop
-  } else {
+  if (commitCount <= 0) {
     commitCount = 0
   }
   commitCount++
-  // debugger
   return commitCount
 })
 .then(function(commitCount) {
-  // debugger
   fse.writeFile(counterFile, commitCount, (err) => {
-    if (err) throw err;
-    console.log('It\'s saved!');
+    if (err) {
+      console.log("Error writing commit count to file")
+    }
   });
 })
