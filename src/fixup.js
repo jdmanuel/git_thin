@@ -20,10 +20,15 @@ Git.Repository.open(path.resolve('../.git'))
   return fse.ensureFile(counterFile)
 })
 .then(function() {
-  fse.readFile(counterFile, 'utf8', function (err, data) {
-    console.log('got here') // => hello!
+  debugger
+  return fse.readFile(counterFile, 'utf8', function(err, data) {
+    debugger
+
   })
 })
+// .then (function(err, data) {
+//   debugger
+// })
 // .then(function(oidResult) {
 //   oid = oidResult
 //   return repo.getHeadCommit()

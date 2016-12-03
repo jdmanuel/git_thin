@@ -33,10 +33,14 @@ _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(
   counterFile = _path2['default'].join(repo.workdir(), '.git_thin/' + fileName);
   return fse.ensureFile(counterFile);
 }).then(function () {
-  fse.readFile(counterFile, 'utf8', function (err, data) {
-    console.log('got here'); // => hello!
+  debugger;
+  return fse.readFile(counterFile, 'utf8', function (err, data) {
+    debugger;
   });
 });
+// .then (function(err, data) {
+//   debugger
+// })
 // .then(function(oidResult) {
 //   oid = oidResult
 //   return repo.getHeadCommit()
