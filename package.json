@@ -2,7 +2,7 @@
   "name": "git_thin",
   "version": "1.0.0",
   "description": "Simple command line utility for git",
-  "main": "src/main/save_state.js",
+  "main": "src/save_state.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
