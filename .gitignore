@@ -35,3 +35,9 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
+
+# OSX Finder
+.DS_HISTORY
+
+# Thin
+.git_thin/*
