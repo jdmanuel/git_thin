@@ -30,14 +30,13 @@ fse.ensureDir = (0, _promisifyNode2['default'])(fse.ensureDir);
 _nodegit2['default'].Repository.open(_path2['default'].resolve('../.git')).then(function (repoResult) {
   repo = repoResult;
   counterFile = _path2['default'].join(repo.workdir(), '.git_thin/' + fileName);
+  debugger;
   return fse.ensureFile(counterFile);
 }).then(function () {
   // debugger
   return fse.readFile(counterFile, 'utf8');
 }).then(function (data) {
-  if ((commitCount = parseInt(data, 10)) > 0) {
-    debugger;
-  } else {
+  if ((commitCount = parseInt(data, 10)) > 0) {} else {
     commitCount = 0;
     console.log("Counter value invalid");
   }

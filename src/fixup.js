@@ -16,6 +16,7 @@ Git.Repository.open(path.resolve('../.git'))
 .then(function(repoResult) {
   repo = repoResult
   counterFile = path.join(repo.workdir(), '.git_thin/' + fileName)
+  debugger
   return fse.ensureFile(counterFile)
 })
 .then(function() {
@@ -24,7 +25,6 @@ Git.Repository.open(path.resolve('../.git'))
 })
 .then (function(data) {
   if ((commitCount = parseInt(data, 10)) > 0 ) {
-    debugger
   } else {
     commitCount = 0
     console.log("Counter value invalid")
