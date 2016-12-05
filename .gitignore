@@ -40,4 +40,4 @@ jspm_packages
 .DS_HISTORY
 
 # Thin
-.git_thin/*
+/.git_thin
