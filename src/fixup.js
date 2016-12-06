@@ -8,7 +8,7 @@ let fse = promisify(require('fs-extra')),
     commitCount = 0,
     authorCommitter = {},
     date = new Date(),
-    repo, index, oid, globalConfig
+    repo, index, oid, globalConfig, head
 
 fse.ensureDir = promisify(fse.ensureDir)
 
@@ -31,25 +31,36 @@ Git.Repository.open(path.resolve('../.git'))
     console.log("Commit value invalid (must be greater than 0)")
     process.exit()
   }
-}).then(function(commit) {
-  let eventEmitter = commit.history()
+}).then(function(headCommit) {
+  head = headCommit
+  head.nthGenAncestor(commitCount).then(function(commit) {
+    Git.Rebase.init(repo, head, commit, null, null).then(function(rebase) {
+      // Use rebase
+    })
 
-    eventEmitter.on('commit', function(commit) {
-      // Use commit
-      debugger
-    });
 
-    eventEmitter.on('end', function(commits) {
-      // Use commits
-      debugger
-    });
+    debugger
+    // Use commit
+  });
 
-    eventEmitter.on('error', function(error) {
-      // Use error
-      debugger
-    });
 
-    eventEmitter.start()
+  // let eventEmitter = commit.history()
+
+  // eventEmitter.on('commit', function(commit) {
+  //   // Use commit
+  //   debugger
+  // });
+
+  // eventEmitter.on('end', function(commits) {
+  //   // Use commits
+  //   debugger
+  // });
+
+  // eventEmitter.on('error', function(error) {
+  //   // Use error
+  //   debugger
+  // });
+  // eventEmitter.start()
 
 })
 // .then(function(oidResult) {
